@@ -22,6 +22,9 @@ export default function RootLayout({
       <body className={`${inter.className} min-h-screen`}>
         <>
           <Header />
+          <main>
+            {children}
+          </main>
         </>
       </body>
     </html>
