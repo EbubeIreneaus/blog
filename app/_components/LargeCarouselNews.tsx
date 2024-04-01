@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 import { Carousel } from "flowbite-react";
 import { NewsType } from "../lib/News.types";
 import Image from "next/image";
@@ -7,11 +7,10 @@ import Image from "next/image";
 import { Button } from "primereact/button";
 import Link from "next/link";
 
-function LargeCarouselNews() {
-  const [first_news, setFirstNews] = useState<NewsType[]>([]);
-  const [last_news, setLastNews] = useState<NewsType[]>([]);
+async function LargeCarouselNews() {
+  let first_news: NewsType[] = []
+  let last_news: NewsType[] = []
 
-  const getNews = async () => {
     try {
       const response = await fetch(
         "http://127.0.0.1:8000/api/software/?length=10"
@@ -22,15 +21,14 @@ function LargeCarouselNews() {
       const data = await response.json();
 
       if (data.length >= 10) {
-        setFirstNews(data.slice(0, 6));
-        setLastNews(data.slice(6, 10));
+        first_news = data.slice(0, 6);
+        last_news = data.slice(6, 10);
       } else {
         console.error("Response contains fewer than six elements");
       }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
 
   const fmtDate = (dateString: Date) =>{
     let date_month = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December']
@@ -41,9 +39,7 @@ function LargeCarouselNews() {
 
     return `${month} ${day}, ${year}`
   }
-  useEffect(() => {
-    getNews();
-  }, []);
+ 
 
   return (
     <div className="lg:!h-[calc(100dvh-60px)] min-h-screen h-full  flex lg:flex-row flex-col">
