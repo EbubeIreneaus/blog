@@ -46,14 +46,15 @@ function LargeCarouselNews() {
   }, []);
 
   return (
-    <div className="h-[calc(100vh-60px)]">
+    <div className="h-[calc(100vh-60px)] flex ">
+      <div className="max-w-[60%] w-full h-full">
       <Carousel leftControl=" " rightControl=" ">
         {first_news.map((news) => {
           return (
             <div
               key={news.id}
               className="h-full w-full relative before:absolute before:bg-gradient-to-t 
-           before:from-black before:via-black/50 before:to-transparent before:top-0 before:left-0 before:z-20 before:w-full
+           before:from-black before:via-black/80 before:to-transparent before:top-0 before:left-0 before:z-20 before:w-full
            before:h-full"
             >
               <img
@@ -82,9 +83,46 @@ function LargeCarouselNews() {
           );
         })}
       </Carousel>
+      </div>
 
-      <div>
-        
+      <div className=" flex-grow h-full max-w-[40%] w-full ">
+        <div className="grid grid-cols-2  h-full">
+          {
+            last_news.map(news => {
+              return (
+                <div
+              key={news.id}
+              className="h-full w-full relative before:absolute before:bg-gradient-to-t 
+           before:from-black before:via-black/90 before:to-black/20 before:top-0 before:left-0 before:z-20 before:w-full
+           before:h-full"
+            >
+              <img
+                src={news.urlToImage}
+                alt={news.title}
+                key={news.id}
+                className="h-full w-full object-fit object-center"
+              />
+              <div className="absolute bottom-0 left-0 py-4 z-50 w-full px-5">
+                <div className="flex gap-3 items-center">
+                  <Button
+                    label="software"
+                    className="px-3 !py-2.5 pt-0 pb-0 border-0 bg-yellow-400 hover:bg-orange-500 rounded-none text-sm font-light text-black/60"
+                  />
+                  <span className="text-white text-sm">
+                    {fmtDate(news.published_at)}
+                  </span>
+                </div>
+                <div className="py-3">
+                    <Link href={news.url} className="hover:underline underline-offset-2">
+                      <h2 className="text-lg font-extrabold text-slate-100 line-clamp-2 text-ellipsis"> {news.title} </h2>
+                    </Link>
+                </div>
+              </div>
+            </div>
+              )
+            })
+          }
+        </div>
       </div>
     </div>
   );
