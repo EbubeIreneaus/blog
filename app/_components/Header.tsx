@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
 
+
 type NavLinks = {
   title: string;
   href: string;

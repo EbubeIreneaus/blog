@@ -4,7 +4,7 @@ export interface NewsType {
     desc: string,
     urlToImage: string,
     url: string,
-    published_at: string,
+    published_at: Date,
     src: 'ThirdParty' | 'native',
     category: string
 }
