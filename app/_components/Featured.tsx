@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Carousel } from "primereact/carousel";
 import { Toolbar } from "primereact/toolbar";
 import { Button } from "primereact/button";
-import {Card} from 'primereact/card'
+// import {Card} from 'primereact/card'
 import { NewsType } from "../lib/News.types";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
@@ -94,8 +94,9 @@ function Featured() {
   );
 
   return (
-    <Card className="lg:max-w-[85%] md:max-w-[90%] px-10 w-full mx-auto my-10">
-      <div className=" my-10">
+   <div className="lg:max-w-[85%] md:max-w-[90%] mt-10 w-full mx-auto">
+     <div className="">
+      <div className=" my-5">
         <Toolbar start={startContent} end={endContent} />
       </div>
 
@@ -144,17 +145,10 @@ function Featured() {
             })}
           </SplideTrack>
 
-          <div className="splide__arrows hidden">
-            <button className="splide__arrow splide__arrow--prev">Prev</button>
-            <button className="splide__arrow splide__arrow--next">Next</button>
-          </div>
-
-          <div className="splide__progress hidden">
-            <div className="splide__progress__bar" />
-          </div>
         </Splide>
       </div>
-    </Card>
+    </div>
+   </div>
   );
 }
 
